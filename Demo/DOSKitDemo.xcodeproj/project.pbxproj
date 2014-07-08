@@ -1,0 +1,436 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9D0EB763195A91D500ED88AC /* DOSKitResources.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = CE968700192715F80020FF32 /* DOSKitResources.bundle */; };
+		CE006A6C17D427C100C589FC /* dosbox-ios.conf in Resources */ = {isa = PBXBuildFile; fileRef = CE006A6617D426E500C589FC /* dosbox-ios.conf */; };
+		CE006A7017D42A4E00C589FC /* CDrive in Resources */ = {isa = PBXBuildFile; fileRef = CE006A6F17D42A4E00C589FC /* CDrive */; };
+		CE026A6117D4492C00943AE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE026A6017D4492C00943AE4 /* Images.xcassets */; };
+		CE30CB6F18FFAF4800381EC9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF6D57E1791E9D7006134CF /* OpenGLES.framework */; };
+		CE96870A192716B20020FF32 /* libDOSBox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE968708192716B20020FF32 /* libDOSBox.a */; };
+		CE96870B192716B20020FF32 /* libSDL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE968709192716B20020FF32 /* libSDL.a */; };
+		CE96870C192716B80020FF32 /* libDOSKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9686FE192715F80020FF32 /* libDOSKit.a */; };
+		CEA4369D18262A1A009B1AF6 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEADE6A6181262DE00268532 /* CoreAudio.framework */; };
+		CEADE6A51812560300268532 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEADE6A41812560300268532 /* CoreMIDI.framework */; };
+		CEADE6A81812644400268532 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF6D5501791E823006134CF /* CoreGraphics.framework */; };
+		CEDCDA71189EE94500E6495F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF6D57A1791E9CF006134CF /* AudioToolbox.framework */; };
+		CEF6D54D1791E823006134CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF6D54C1791E823006134CF /* UIKit.framework */; };
+		CEF6D54F1791E823006134CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF6D54E1791E823006134CF /* Foundation.framework */; };
+		CEF6D5591791E823006134CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF6D5581791E823006134CF /* main.m */; };
+		CEF6D55D1791E823006134CF /* DKDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF6D55C1791E823006134CF /* DKDAppDelegate.m */; };
+		CEF6D55F1791E823006134CF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF6D55E1791E823006134CF /* Default.png */; };
+		CEF6D5611791E823006134CF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF6D5601791E823006134CF /* Default@2x.png */; };
+		CEF6D5631791E823006134CF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF6D5621791E823006134CF /* Default-568h@2x.png */; };
+		CEF6D57D1791E9D3006134CF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF6D57C1791E9D3006134CF /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE9686FD192715F80020FF32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE9686F5192715F70020FF32 /* DOSKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CEDB825D179674BF00972087;
+			remoteInfo = DOSKit;
+		};
+		CE9686FF192715F80020FF32 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE9686F5192715F70020FF32 /* DOSKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CE30CB5118FFA90900381EC9;
+			remoteInfo = DOSKitResources;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9DBE421A1948143800B1D47E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				9D0EB763195A91D500ED88AC /* DOSKitResources.bundle in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CE006A6617D426E500C589FC /* dosbox-ios.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "dosbox-ios.conf"; sourceTree = "<group>"; };
+		CE006A6F17D42A4E00C589FC /* CDrive */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CDrive; sourceTree = "<group>"; };
+		CE026A6017D4492C00943AE4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		CE30CB6D18FFAF1C00381EC9 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		CE9686F5192715F70020FF32 /* DOSKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DOSKit.xcodeproj; path = ../DOSKit.xcodeproj; sourceTree = "<group>"; };
+		CE968708192716B20020FF32 /* libDOSBox.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libDOSBox.a; path = "../../../Library/Developer/Xcode/DerivedData/DOSKitDemo-blispvsmruvxebfizzoebunrayiz/Build/Products/Debug-iphoneos/libDOSBox.a"; sourceTree = "<group>"; };
+		CE968709192716B20020FF32 /* libSDL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL.a; path = "../../../Library/Developer/Xcode/DerivedData/DOSKitDemo-blispvsmruvxebfizzoebunrayiz/Build/Products/Debug-iphoneos/libSDL.a"; sourceTree = "<group>"; };
+		CEADE69D181252D400268532 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CEADE6A21812555A00268532 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		CEADE6A41812560300268532 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		CEADE6A6181262DE00268532 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		CEF6D5491791E823006134CF /* DOSKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DOSKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEF6D54C1791E823006134CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CEF6D54E1791E823006134CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CEF6D5501791E823006134CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CEF6D5541791E823006134CF /* DOSKitDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DOSKitDemo-Info.plist"; sourceTree = "<group>"; };
+		CEF6D5581791E823006134CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CEF6D55A1791E823006134CF /* DOSKitDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DOSKitDemo-Prefix.pch"; sourceTree = "<group>"; };
+		CEF6D55B1791E823006134CF /* DKDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKDAppDelegate.h; sourceTree = "<group>"; };
+		CEF6D55C1791E823006134CF /* DKDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKDAppDelegate.m; sourceTree = "<group>"; };
+		CEF6D55E1791E823006134CF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		CEF6D5601791E823006134CF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		CEF6D5621791E823006134CF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CEF6D57A1791E9CF006134CF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CEF6D57C1791E9D3006134CF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CEF6D57E1791E9D7006134CF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEF6D5461791E823006134CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE96870C192716B80020FF32 /* libDOSKit.a in Frameworks */,
+				CE96870A192716B20020FF32 /* libDOSBox.a in Frameworks */,
+				CE96870B192716B20020FF32 /* libSDL.a in Frameworks */,
+				CE30CB6F18FFAF4800381EC9 /* OpenGLES.framework in Frameworks */,
+				CEDCDA71189EE94500E6495F /* AudioToolbox.framework in Frameworks */,
+				CEA4369D18262A1A009B1AF6 /* CoreAudio.framework in Frameworks */,
+				CEADE6A81812644400268532 /* CoreGraphics.framework in Frameworks */,
+				CEADE6A51812560300268532 /* CoreMIDI.framework in Frameworks */,
+				CEF6D57D1791E9D3006134CF /* QuartzCore.framework in Frameworks */,
+				CEF6D54D1791E823006134CF /* UIKit.framework in Frameworks */,
+				CEF6D54F1791E823006134CF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE9686F6192715F70020FF32 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE9686FE192715F80020FF32 /* libDOSKit.a */,
+				CE968700192715F80020FF32 /* DOSKitResources.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEF6D5401791E823006134CF = {
+			isa = PBXGroup;
+			children = (
+				CEF6D56A1791E83A006134CF /* Resources */,
+				CEF6D5691791E836006134CF /* Source */,
+				CEF6D54B1791E823006134CF /* Frameworks */,
+				CEF6D54A1791E823006134CF /* Products */,
+				CE9686F5192715F70020FF32 /* DOSKit.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		CEF6D54A1791E823006134CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEF6D5491791E823006134CF /* DOSKitDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEF6D54B1791E823006134CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE968708192716B20020FF32 /* libDOSBox.a */,
+				CE968709192716B20020FF32 /* libSDL.a */,
+				CE30CB6D18FFAF1C00381EC9 /* GLKit.framework */,
+				CEADE6A6181262DE00268532 /* CoreAudio.framework */,
+				CEADE6A41812560300268532 /* CoreMIDI.framework */,
+				CEADE6A21812555A00268532 /* MobileCoreServices.framework */,
+				CEADE69D181252D400268532 /* AVFoundation.framework */,
+				CEF6D57E1791E9D7006134CF /* OpenGLES.framework */,
+				CEF6D57C1791E9D3006134CF /* QuartzCore.framework */,
+				CEF6D57A1791E9CF006134CF /* AudioToolbox.framework */,
+				CEF6D54C1791E823006134CF /* UIKit.framework */,
+				CEF6D54E1791E823006134CF /* Foundation.framework */,
+				CEF6D5501791E823006134CF /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEF6D5691791E836006134CF /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				CEF6D55B1791E823006134CF /* DKDAppDelegate.h */,
+				CEF6D55C1791E823006134CF /* DKDAppDelegate.m */,
+				CEF6D5581791E823006134CF /* main.m */,
+				CEF6D55A1791E823006134CF /* DOSKitDemo-Prefix.pch */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		CEF6D56A1791E83A006134CF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE026A6017D4492C00943AE4 /* Images.xcassets */,
+				CE006A6F17D42A4E00C589FC /* CDrive */,
+				CEF6D5541791E823006134CF /* DOSKitDemo-Info.plist */,
+				CE006A6617D426E500C589FC /* dosbox-ios.conf */,
+				CEF6D55E1791E823006134CF /* Default.png */,
+				CEF6D5601791E823006134CF /* Default@2x.png */,
+				CEF6D5621791E823006134CF /* Default-568h@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEF6D5481791E823006134CF /* DOSKitDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEF6D5661791E823006134CF /* Build configuration list for PBXNativeTarget "DOSKitDemo" */;
+			buildPhases = (
+				CEF6D5451791E823006134CF /* Sources */,
+				CEF6D5461791E823006134CF /* Frameworks */,
+				CEF6D5471791E823006134CF /* Resources */,
+				9DBE421A1948143800B1D47E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DOSKitDemo;
+			productName = IDBDemo;
+			productReference = CEF6D5491791E823006134CF /* DOSKitDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEF6D5411791E823006134CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = user;
+				TargetAttributes = {
+					CEF6D5481791E823006134CF = {
+						DevelopmentTeam = 6J5ZBBT7M9;
+					};
+				};
+			};
+			buildConfigurationList = CEF6D5441791E823006134CF /* Build configuration list for PBXProject "DOSKitDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CEF6D5401791E823006134CF;
+			productRefGroup = CEF6D54A1791E823006134CF /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CE9686F6192715F70020FF32 /* Products */;
+					ProjectRef = CE9686F5192715F70020FF32 /* DOSKit.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				CEF6D5481791E823006134CF /* DOSKitDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CE9686FE192715F80020FF32 /* libDOSKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libDOSKit.a;
+			remoteRef = CE9686FD192715F80020FF32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CE968700192715F80020FF32 /* DOSKitResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = DOSKitResources.bundle;
+			remoteRef = CE9686FF192715F80020FF32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEF6D5471791E823006134CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE006A7017D42A4E00C589FC /* CDrive in Resources */,
+				CE006A6C17D427C100C589FC /* dosbox-ios.conf in Resources */,
+				CEF6D55F1791E823006134CF /* Default.png in Resources */,
+				CE026A6117D4492C00943AE4 /* Images.xcassets in Resources */,
+				CEF6D5611791E823006134CF /* Default@2x.png in Resources */,
+				CEF6D5631791E823006134CF /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEF6D5451791E823006134CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEF6D5591791E823006134CF /* main.m in Sources */,
+				CEF6D55D1791E823006134CF /* DKDAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CEF6D5641791E823006134CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CEF6D5651791E823006134CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CEF6D5671791E823006134CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Source/DOSKitDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = YES;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Resources/DOSKitDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_NAME = DOSKitDemo;
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CEF6D5681791E823006134CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Source/DOSKitDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = YES;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Resources/DOSKitDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_NAME = DOSKitDemo;
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEF6D5441791E823006134CF /* Build configuration list for PBXProject "DOSKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEF6D5641791E823006134CF /* Debug */,
+				CEF6D5651791E823006134CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEF6D5661791E823006134CF /* Build configuration list for PBXNativeTarget "DOSKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEF6D5671791E823006134CF /* Debug */,
+				CEF6D5681791E823006134CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CEF6D5411791E823006134CF /* Project object */;
+}

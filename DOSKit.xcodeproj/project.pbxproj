@@ -1,0 +1,831 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		CE06C69218F62B4D00AC2015 /* DOSKitFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = CE06C69318F62B4D00AC2015 /* Build configuration list for PBXAggregateTarget "DOSKitFramework" */;
+			buildPhases = (
+				CE06C69C18F62B5F00AC2015 /* ShellScript */,
+			);
+			dependencies = (
+				CE30CB7218FFB13700381EC9 /* PBXTargetDependency */,
+				CE06C69718F62B5400AC2015 /* PBXTargetDependency */,
+			);
+			name = DOSKitFramework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		9DB24E0B193427EC008850EC /* _DSKShaderProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DB24E09193427EC008850EC /* _DSKShaderProgram.h */; };
+		9DB24E0C193427EC008850EC /* _DSKShaderProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB24E0A193427EC008850EC /* _DSKShaderProgram.m */; };
+		9DB24E101934287A008850EC /* _DSKShader.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DB24E0E1934287A008850EC /* _DSKShader.h */; };
+		9DB24E111934287A008850EC /* _DSKShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB24E0F1934287A008850EC /* _DSKShader.m */; };
+		9DBE42181948120200B1D47E /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 9DBE42161948120200B1D47E /* Shader.fsh */; };
+		9DBE42191948120200B1D47E /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 9DBE42171948120200B1D47E /* Shader.vsh */; };
+		CE02ED1318A73D3D00C80120 /* DSKFileSystem.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE02ED1218A73D3D00C80120 /* DSKFileSystem.mm */; };
+		CE06C63B18F62A1500AC2015 /* DOSKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CEFC1F9218CC311800727885 /* DOSKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE30CB4718FFA23300381EC9 /* DSKException.h in Headers */ = {isa = PBXBuildFile; fileRef = CE30CB4518FFA23300381EC9 /* DSKException.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE30CB4818FFA23300381EC9 /* DSKException.m in Sources */ = {isa = PBXBuildFile; fileRef = CE30CB4618FFA23300381EC9 /* DSKException.m */; };
+		CE30CB4B18FFA29B00381EC9 /* DSKError.h in Headers */ = {isa = PBXBuildFile; fileRef = CE30CB4918FFA29B00381EC9 /* DSKError.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE30CB4C18FFA29B00381EC9 /* DSKError.m in Sources */ = {isa = PBXBuildFile; fileRef = CE30CB4A18FFA29B00381EC9 /* DSKError.m */; };
+		CE30CB5318FFA90900381EC9 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE30CB5218FFA90900381EC9 /* CoreFoundation.framework */; };
+		CE30CB5918FFA90900381EC9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE30CB5718FFA90900381EC9 /* InfoPlist.strings */; };
+		CE30CB6218FFAA6500381EC9 /* NSBundle+Resources.h in Headers */ = {isa = PBXBuildFile; fileRef = CE30CB6018FFAA6500381EC9 /* NSBundle+Resources.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE30CB6318FFAA6500381EC9 /* NSBundle+Resources.m in Sources */ = {isa = PBXBuildFile; fileRef = CE30CB6118FFAA6500381EC9 /* NSBundle+Resources.m */; };
+		CE30CB6B18FFABB400381EC9 /* dosbox.conf in Resources */ = {isa = PBXBuildFile; fileRef = CE30CB6A18FFABB400381EC9 /* dosbox.conf */; };
+		CE38720218A616B0009CF57C /* DSKEmulator.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEE3CD0A17D3D7BD00EF75F1 /* DSKEmulator.mm */; };
+		CE38720418A616B0009CF57C /* _DSKRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA448ED181B9A4C00022715 /* _DSKRenderer.m */; };
+		CE38720618A616B0009CF57C /* DSKKeyboard.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEA1CC3B182558AE00E0957A /* DSKKeyboard.mm */; };
+		CE38720818A616B0009CF57C /* DSKShell.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE26282C18A3E1CF002349EE /* DSKShell.mm */; };
+		CE38724B18A6194C009CF57C /* DSKJoystick.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE38724A18A6194C009CF57C /* DSKJoystick.mm */; };
+		CE38724E18A6198A009CF57C /* DSKAudio.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE38724D18A6198A009CF57C /* DSKAudio.mm */; };
+		CE38725218A6A4B2009CF57C /* UIDevice+Jailbreak.m in Sources */ = {isa = PBXBuildFile; fileRef = CE38725118A6A4B2009CF57C /* UIDevice+Jailbreak.m */; };
+		CE45FCB21926B201000DA660 /* DSKView.h in Headers */ = {isa = PBXBuildFile; fileRef = CE45FCB01926B201000DA660 /* DSKView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE45FCB31926B201000DA660 /* DSKView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE45FCB11926B201000DA660 /* DSKView.m */; };
+		CE6A41861902D078009712E9 /* _DSKSimpleRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6A41841902D078009712E9 /* _DSKSimpleRenderer.m */; };
+		CE71966218CAF59F0003753E /* DSKDrive.m in Sources */ = {isa = PBXBuildFile; fileRef = CE71966118CAF59F0003753E /* DSKDrive.m */; };
+		CE71966518CAF5B90003753E /* DSKPath.m in Sources */ = {isa = PBXBuildFile; fileRef = CE71966418CAF5B90003753E /* DSKPath.m */; };
+		CE71966918CAF9B10003753E /* DSKMouse.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE71966818CAF9B10003753E /* DSKMouse.mm */; };
+		CE71966C18CAFB740003753E /* DSKVideo.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE71966B18CAFB740003753E /* DSKVideo.mm */; };
+		CE73F9D618CC487300B1524E /* _DSKFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CE73F9D518CC487300B1524E /* _DSKFrame.m */; };
+		CEB6A30618CD52D600A8BF9B /* _DSKTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB6A30518CD52D600A8BF9B /* _DSKTexture.m */; };
+		CED721B219023BC900C7D2B5 /* _DSKCRTRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = CED721B019023BC900C7D2B5 /* _DSKCRTRenderer.m */; };
+		CED798A018FBA8440010B537 /* DSKLog.h in Headers */ = {isa = PBXBuildFile; fileRef = CED7989E18FBA8440010B537 /* DSKLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CED798A118FBA8440010B537 /* DSKLog.m in Sources */ = {isa = PBXBuildFile; fileRef = CED7989F18FBA8440010B537 /* DSKLog.m */; };
+		CED8439218F6641800E4A45F /* DSKKeyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = CEA1CC3A182558AE00E0957A /* DSKKeyboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CED8439318F6641800E4A45F /* DSKMouse.h in Headers */ = {isa = PBXBuildFile; fileRef = CE71966718CAF9B10003753E /* DSKMouse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CED8439418F6641800E4A45F /* DSKJoystick.h in Headers */ = {isa = PBXBuildFile; fileRef = CE38724918A6194C009CF57C /* DSKJoystick.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CED8439518F6641800E4A45F /* DSKEmulator.h in Headers */ = {isa = PBXBuildFile; fileRef = CEE3CD0917D3D7BD00EF75F1 /* DSKEmulator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CED8439718F6641800E4A45F /* DSKFileSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = CE02ED1118A73D3D00C80120 /* DSKFileSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CED8439818F6641800E4A45F /* DSKShell.h in Headers */ = {isa = PBXBuildFile; fileRef = CE26282B18A3E1CF002349EE /* DSKShell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CED8439918F6641800E4A45F /* DSKDrive.h in Headers */ = {isa = PBXBuildFile; fileRef = CE71966018CAF59F0003753E /* DSKDrive.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CED8439A18F6641800E4A45F /* DSKPath.h in Headers */ = {isa = PBXBuildFile; fileRef = CE71966318CAF5B90003753E /* DSKPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CED8439D18F6641800E4A45F /* DSKVideo.h in Headers */ = {isa = PBXBuildFile; fileRef = CE71966A18CAFB740003753E /* DSKVideo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CED8439E18F6641D00E4A45F /* DSKAudio.h in Headers */ = {isa = PBXBuildFile; fileRef = CE38724C18A6198A009CF57C /* DSKAudio.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CEDF53A2190161BE00BC5818 /* DSKGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = CEDF53A0190161BE00BC5818 /* DSKGLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CEDF53A3190161BE00BC5818 /* DSKGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDF53A1190161BE00BC5818 /* DSKGLView.m */; };
+		CEFF3D0C18FF94930004FF6A /* DSKDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = CEFF3D0A18FF94440004FF6A /* DSKDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE06C69618F62B5400AC2015 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE2CA1C61787A14D001F6D5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEDB825C179674BF00972087;
+			remoteInfo = DOSKit;
+		};
+		CE30CB7118FFB13700381EC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE2CA1C61787A14D001F6D5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE30CB5018FFA90900381EC9;
+			remoteInfo = DOSKitResources;
+		};
+		CEDCDF451904A4DB00F59FD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEDCDF3F1904A4DB00F59FD7 /* DOSBox.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CE2CA1CE1787A14D001F6D5F;
+			remoteInfo = DOSBox;
+		};
+		CEDCDF4F1904C8B600F59FD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEDCDF3F1904A4DB00F59FD7 /* DOSBox.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CE2CA1CD1787A14D001F6D5F;
+			remoteInfo = DOSBox;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9DB24E09193427EC008850EC /* _DSKShaderProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DSKShaderProgram.h; sourceTree = "<group>"; };
+		9DB24E0A193427EC008850EC /* _DSKShaderProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DSKShaderProgram.m; sourceTree = "<group>"; };
+		9DB24E0E1934287A008850EC /* _DSKShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DSKShader.h; sourceTree = "<group>"; };
+		9DB24E0F1934287A008850EC /* _DSKShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DSKShader.m; sourceTree = "<group>"; };
+		9DBE42161948120200B1D47E /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
+		9DBE42171948120200B1D47E /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
+		CE02ED1118A73D3D00C80120 /* DSKFileSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DSKFileSystem.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE02ED1218A73D3D00C80120 /* DSKFileSystem.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = DSKFileSystem.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE06C412192C41C100E03B3E /* _DSKDrawingTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = _DSKDrawingTypes.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE06C413192C52E500E03B3E /* DSKGLViewSubclass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSKGLViewSubclass.h; sourceTree = "<group>"; };
+		CE06C414192C551C00E03B3E /* _DSKRendering.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _DSKRendering.h; sourceTree = "<group>"; };
+		CE26282B18A3E1CF002349EE /* DSKShell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DSKShell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE26282C18A3E1CF002349EE /* DSKShell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = DSKShell.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CE30CB4518FFA23300381EC9 /* DSKException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSKException.h; sourceTree = "<group>"; };
+		CE30CB4618FFA23300381EC9 /* DSKException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSKException.m; sourceTree = "<group>"; };
+		CE30CB4918FFA29B00381EC9 /* DSKError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSKError.h; sourceTree = "<group>"; };
+		CE30CB4A18FFA29B00381EC9 /* DSKError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSKError.m; sourceTree = "<group>"; };
+		CE30CB5118FFA90900381EC9 /* DOSKitResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DOSKitResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE30CB5218FFA90900381EC9 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		CE30CB5618FFA90900381EC9 /* DOSKitResources-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DOSKitResources-Info.plist"; sourceTree = "<group>"; };
+		CE30CB5818FFA90900381EC9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CE30CB5A18FFA90900381EC9 /* DOSKitResources-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DOSKitResources-Prefix.pch"; sourceTree = "<group>"; };
+		CE30CB6018FFAA6500381EC9 /* NSBundle+Resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Resources.h"; sourceTree = "<group>"; };
+		CE30CB6118FFAA6500381EC9 /* NSBundle+Resources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Resources.m"; sourceTree = "<group>"; };
+		CE30CB6A18FFABB400381EC9 /* dosbox.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dosbox.conf; sourceTree = "<group>"; };
+		CE38724918A6194C009CF57C /* DSKJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSKJoystick.h; sourceTree = "<group>"; };
+		CE38724A18A6194C009CF57C /* DSKJoystick.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DSKJoystick.mm; sourceTree = "<group>"; };
+		CE38724C18A6198A009CF57C /* DSKAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DSKAudio.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE38724D18A6198A009CF57C /* DSKAudio.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = DSKAudio.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CE38725018A6A4B2009CF57C /* UIDevice+Jailbreak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "UIDevice+Jailbreak.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE38725118A6A4B2009CF57C /* UIDevice+Jailbreak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "UIDevice+Jailbreak.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CE45FCB01926B201000DA660 /* DSKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSKView.h; sourceTree = "<group>"; };
+		CE45FCB11926B201000DA660 /* DSKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSKView.m; sourceTree = "<group>"; };
+		CE6A41831902D078009712E9 /* _DSKSimpleRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DSKSimpleRenderer.h; sourceTree = "<group>"; };
+		CE6A41841902D078009712E9 /* _DSKSimpleRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DSKSimpleRenderer.m; sourceTree = "<group>"; };
+		CE71966018CAF59F0003753E /* DSKDrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DSKDrive.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE71966118CAF59F0003753E /* DSKDrive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DSKDrive.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CE71966318CAF5B90003753E /* DSKPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DSKPath.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE71966418CAF5B90003753E /* DSKPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DSKPath.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CE71966718CAF9B10003753E /* DSKMouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DSKMouse.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE71966818CAF9B10003753E /* DSKMouse.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = DSKMouse.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE71966A18CAFB740003753E /* DSKVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DSKVideo.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE71966B18CAFB740003753E /* DSKVideo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = DSKVideo.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE73F9D418CC487300B1524E /* _DSKFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = _DSKFrame.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CE73F9D518CC487300B1524E /* _DSKFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = _DSKFrame.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CEA1CC3A182558AE00E0957A /* DSKKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DSKKeyboard.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CEA1CC3B182558AE00E0957A /* DSKKeyboard.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = DSKKeyboard.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CEA448EC181B9A4C00022715 /* _DSKRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = _DSKRenderer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CEA448ED181B9A4C00022715 /* _DSKRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = _DSKRenderer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		CEB6A30418CD52D600A8BF9B /* _DSKTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DSKTexture.h; sourceTree = "<group>"; };
+		CEB6A30518CD52D600A8BF9B /* _DSKTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DSKTexture.m; sourceTree = "<group>"; };
+		CEBF61A118FA42EB008E9ACA /* libSDL.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL.a; path = "../../Library/Developer/Xcode/DerivedData/DOSKit-esehrtbiasopoxbazmqkjocchwwf/Build/Products/Debug-iphoneos/libSDL.a"; sourceTree = "<group>"; };
+		CED721AF19023BC900C7D2B5 /* _DSKCRTRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _DSKCRTRenderer.h; sourceTree = "<group>"; };
+		CED721B019023BC900C7D2B5 /* _DSKCRTRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _DSKCRTRenderer.m; sourceTree = "<group>"; };
+		CED721B71902460C00C7D2B5 /* DSKVideoInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSKVideoInternal.h; sourceTree = "<group>"; };
+		CED721B9190248F600C7D2B5 /* DSKGLViewInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSKGLViewInternal.h; sourceTree = "<group>"; };
+		CED7988518FB77390010B537 /* DOSKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DOSKit-Prefix.pch"; sourceTree = "<group>"; };
+		CED7988A18FB928B0010B537 /* DSKEmulatorInternal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSKEmulatorInternal.h; sourceTree = "<group>"; };
+		CED7989E18FBA8440010B537 /* DSKLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSKLog.h; sourceTree = "<group>"; };
+		CED7989F18FBA8440010B537 /* DSKLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSKLog.m; sourceTree = "<group>"; };
+		CEDB825D179674BF00972087 /* libDOSKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDOSKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEDCDF3F1904A4DB00F59FD7 /* DOSBox.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DOSBox.xcodeproj; path = Libraries/DOSBox/DOSBox.xcodeproj; sourceTree = "<group>"; };
+		CEDF53A0190161BE00BC5818 /* DSKGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSKGLView.h; path = Rendering/DSKGLView.h; sourceTree = "<group>"; };
+		CEDF53A1190161BE00BC5818 /* DSKGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSKGLView.m; path = Rendering/DSKGLView.m; sourceTree = "<group>"; };
+		CEE3CD0917D3D7BD00EF75F1 /* DSKEmulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DSKEmulator.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CEE3CD0A17D3D7BD00EF75F1 /* DSKEmulator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = DSKEmulator.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CEF6D4F51791DA80006134CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CEF6D4F71791DA80006134CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CEF6D4F91791DA80006134CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CEF6D5331791E06C006134CF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		CEF6D5351791E071006134CF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CEF6D5371791E076006134CF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CEFC1F9218CC311800727885 /* DOSKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DOSKit.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		CEFF3D0A18FF94440004FF6A /* DSKDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = DSKDefine.h; path = ../../Common/DSKDefine.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE30CB4E18FFA90900381EC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE30CB5318FFA90900381EC9 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEDB825A179674BF00972087 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE2CA1C51787A14D001F6D5F = {
+			isa = PBXGroup;
+			children = (
+				CEF6D5821791EAEC006134CF /* Source */,
+				CE30CB5418FFA90900381EC9 /* Resources */,
+				CE2CA1D01787A14D001F6D5F /* Frameworks */,
+				CE2CA1CF1787A14D001F6D5F /* Products */,
+				CEDCDF3F1904A4DB00F59FD7 /* DOSBox.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		CE2CA1CF1787A14D001F6D5F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEDB825D179674BF00972087 /* libDOSKit.a */,
+				CE30CB5118FFA90900381EC9 /* DOSKitResources.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE2CA1D01787A14D001F6D5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEBF61A118FA42EB008E9ACA /* libSDL.a */,
+				CEF6D5371791E076006134CF /* AudioToolbox.framework */,
+				CEF6D5351791E071006134CF /* QuartzCore.framework */,
+				CEF6D5331791E06C006134CF /* OpenGLES.framework */,
+				CEF6D4F51791DA80006134CF /* UIKit.framework */,
+				CEF6D4F71791DA80006134CF /* Foundation.framework */,
+				CEF6D4F91791DA80006134CF /* CoreGraphics.framework */,
+				CE30CB5218FFA90900381EC9 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE30CB5418FFA90900381EC9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9DBE42161948120200B1D47E /* Shader.fsh */,
+				9DBE42171948120200B1D47E /* Shader.vsh */,
+				CE30CB6A18FFABB400381EC9 /* dosbox.conf */,
+				CE30CB5518FFA90900381EC9 /* Supporting Files */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CE30CB5518FFA90900381EC9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE30CB5618FFA90900381EC9 /* DOSKitResources-Info.plist */,
+				CE30CB5718FFA90900381EC9 /* InfoPlist.strings */,
+				CE30CB5A18FFA90900381EC9 /* DOSKitResources-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE71965818CAF25F0003753E /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				CE38724C18A6198A009CF57C /* DSKAudio.h */,
+				CE38724D18A6198A009CF57C /* DSKAudio.mm */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		CE71965918CAF2640003753E /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				CED721B319023BDE00C7D2B5 /* Rendering */,
+				CEDF53A0190161BE00BC5818 /* DSKGLView.h */,
+				CEDF53A1190161BE00BC5818 /* DSKGLView.m */,
+				CE45FCB01926B201000DA660 /* DSKView.h */,
+				CE45FCB11926B201000DA660 /* DSKView.m */,
+				CED721B71902460C00C7D2B5 /* DSKVideoInternal.h */,
+				CE71966A18CAFB740003753E /* DSKVideo.h */,
+				CE71966B18CAFB740003753E /* DSKVideo.mm */,
+				CE73F9D418CC487300B1524E /* _DSKFrame.h */,
+				CE73F9D518CC487300B1524E /* _DSKFrame.m */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		CE71965A18CAF26E0003753E /* Shell */ = {
+			isa = PBXGroup;
+			children = (
+				CE02ED1118A73D3D00C80120 /* DSKFileSystem.h */,
+				CE02ED1218A73D3D00C80120 /* DSKFileSystem.mm */,
+				CE26282B18A3E1CF002349EE /* DSKShell.h */,
+				CE26282C18A3E1CF002349EE /* DSKShell.mm */,
+				CE71966018CAF59F0003753E /* DSKDrive.h */,
+				CE71966118CAF59F0003753E /* DSKDrive.m */,
+				CE71966318CAF5B90003753E /* DSKPath.h */,
+				CE71966418CAF5B90003753E /* DSKPath.m */,
+			);
+			path = Shell;
+			sourceTree = "<group>";
+		};
+		CE71965C18CAF39E0003753E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CE38725018A6A4B2009CF57C /* UIDevice+Jailbreak.h */,
+				CE38725118A6A4B2009CF57C /* UIDevice+Jailbreak.m */,
+				CE30CB4918FFA29B00381EC9 /* DSKError.h */,
+				CE30CB4A18FFA29B00381EC9 /* DSKError.m */,
+				CE30CB4518FFA23300381EC9 /* DSKException.h */,
+				CE30CB4618FFA23300381EC9 /* DSKException.m */,
+				CED7989E18FBA8440010B537 /* DSKLog.h */,
+				CED7989F18FBA8440010B537 /* DSKLog.m */,
+				CE30CB6018FFAA6500381EC9 /* NSBundle+Resources.h */,
+				CE30CB6118FFAA6500381EC9 /* NSBundle+Resources.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CE73F9D318CC3BDF00B1524E /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				CEA1CC3A182558AE00E0957A /* DSKKeyboard.h */,
+				CEA1CC3B182558AE00E0957A /* DSKKeyboard.mm */,
+				CE71966718CAF9B10003753E /* DSKMouse.h */,
+				CE71966818CAF9B10003753E /* DSKMouse.mm */,
+				CE38724918A6194C009CF57C /* DSKJoystick.h */,
+				CE38724A18A6194C009CF57C /* DSKJoystick.mm */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		CED721B319023BDE00C7D2B5 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				CE06C413192C52E500E03B3E /* DSKGLViewSubclass.h */,
+				CED721B9190248F600C7D2B5 /* DSKGLViewInternal.h */,
+				CEB6A30418CD52D600A8BF9B /* _DSKTexture.h */,
+				CEB6A30518CD52D600A8BF9B /* _DSKTexture.m */,
+				9DB24E09193427EC008850EC /* _DSKShaderProgram.h */,
+				9DB24E0A193427EC008850EC /* _DSKShaderProgram.m */,
+				9DB24E0E1934287A008850EC /* _DSKShader.h */,
+				9DB24E0F1934287A008850EC /* _DSKShader.m */,
+				CE06C414192C551C00E03B3E /* _DSKRendering.h */,
+				CE06C412192C41C100E03B3E /* _DSKDrawingTypes.h */,
+				CEFF3D0A18FF94440004FF6A /* DSKDefine.h */,
+				CEA448EC181B9A4C00022715 /* _DSKRenderer.h */,
+				CEA448ED181B9A4C00022715 /* _DSKRenderer.m */,
+				CE6A41831902D078009712E9 /* _DSKSimpleRenderer.h */,
+				CE6A41841902D078009712E9 /* _DSKSimpleRenderer.m */,
+				CED721AF19023BC900C7D2B5 /* _DSKCRTRenderer.h */,
+				CED721B019023BC900C7D2B5 /* _DSKCRTRenderer.m */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		CEDCDF401904A4DB00F59FD7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEDCDF461904A4DB00F59FD7 /* libDOSBox.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEF6D5821791EAEC006134CF /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				CED7988518FB77390010B537 /* DOSKit-Prefix.pch */,
+				CEFC1F9218CC311800727885 /* DOSKit.h */,
+				CE73F9D318CC3BDF00B1524E /* Input */,
+				CEFC1F9118CC307A00727885 /* Emulator */,
+				CE71965C18CAF39E0003753E /* Common */,
+				CE71965A18CAF26E0003753E /* Shell */,
+				CE71965918CAF2640003753E /* Video */,
+				CE71965818CAF25F0003753E /* Audio */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		CEFC1F9118CC307A00727885 /* Emulator */ = {
+			isa = PBXGroup;
+			children = (
+				CED7988A18FB928B0010B537 /* DSKEmulatorInternal.h */,
+				CEE3CD0917D3D7BD00EF75F1 /* DSKEmulator.h */,
+				CEE3CD0A17D3D7BD00EF75F1 /* DSKEmulator.mm */,
+			);
+			path = Emulator;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CE06C63A18F629CA00AC2015 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE06C63B18F62A1500AC2015 /* DOSKit.h in Headers */,
+				CED8439E18F6641D00E4A45F /* DSKAudio.h in Headers */,
+				CED8439218F6641800E4A45F /* DSKKeyboard.h in Headers */,
+				CED8439318F6641800E4A45F /* DSKMouse.h in Headers */,
+				CED8439418F6641800E4A45F /* DSKJoystick.h in Headers */,
+				9DB24E0B193427EC008850EC /* _DSKShaderProgram.h in Headers */,
+				CED8439518F6641800E4A45F /* DSKEmulator.h in Headers */,
+				CED8439718F6641800E4A45F /* DSKFileSystem.h in Headers */,
+				CED8439818F6641800E4A45F /* DSKShell.h in Headers */,
+				CED8439918F6641800E4A45F /* DSKDrive.h in Headers */,
+				CED8439A18F6641800E4A45F /* DSKPath.h in Headers */,
+				CED798A018FBA8440010B537 /* DSKLog.h in Headers */,
+				CE30CB4718FFA23300381EC9 /* DSKException.h in Headers */,
+				CE30CB4B18FFA29B00381EC9 /* DSKError.h in Headers */,
+				9DB24E101934287A008850EC /* _DSKShader.h in Headers */,
+				CED8439D18F6641800E4A45F /* DSKVideo.h in Headers */,
+				CEDF53A2190161BE00BC5818 /* DSKGLView.h in Headers */,
+				CE45FCB21926B201000DA660 /* DSKView.h in Headers */,
+				CE30CB6218FFAA6500381EC9 /* NSBundle+Resources.h in Headers */,
+				CEFF3D0C18FF94930004FF6A /* DSKDefine.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CE30CB5018FFA90900381EC9 /* DOSKitResources */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE30CB5B18FFA90900381EC9 /* Build configuration list for PBXNativeTarget "DOSKitResources" */;
+			buildPhases = (
+				CE30CB4D18FFA90900381EC9 /* Sources */,
+				CE30CB4E18FFA90900381EC9 /* Frameworks */,
+				CE30CB4F18FFA90900381EC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DOSKitResources;
+			productName = DOSKitResources;
+			productReference = CE30CB5118FFA90900381EC9 /* DOSKitResources.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		CEDB825C179674BF00972087 /* DOSKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEDB8266179674BF00972087 /* Build configuration list for PBXNativeTarget "DOSKit" */;
+			buildPhases = (
+				CEDB8259179674BF00972087 /* Sources */,
+				CEDB825A179674BF00972087 /* Frameworks */,
+				CE06C63A18F629CA00AC2015 /* Headers */,
+				CED8438E18F663B900E4A45F /* Run Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CEDCDF501904C8B600F59FD7 /* PBXTargetDependency */,
+			);
+			name = DOSKit;
+			productName = iDOSBox;
+			productReference = CEDB825D179674BF00972087 /* libDOSKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE2CA1C61787A14D001F6D5F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = user;
+			};
+			buildConfigurationList = CE2CA1C91787A14D001F6D5F /* Build configuration list for PBXProject "DOSKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CE2CA1C51787A14D001F6D5F;
+			productRefGroup = CE2CA1CF1787A14D001F6D5F /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CEDCDF401904A4DB00F59FD7 /* Products */;
+					ProjectRef = CEDCDF3F1904A4DB00F59FD7 /* DOSBox.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				CEDB825C179674BF00972087 /* DOSKit */,
+				CE06C69218F62B4D00AC2015 /* DOSKitFramework */,
+				CE30CB5018FFA90900381EC9 /* DOSKitResources */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CEDCDF461904A4DB00F59FD7 /* libDOSBox.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libDOSBox.a;
+			remoteRef = CEDCDF451904A4DB00F59FD7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE30CB4F18FFA90900381EC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE30CB6B18FFABB400381EC9 /* dosbox.conf in Resources */,
+				CE30CB5918FFA90900381EC9 /* InfoPlist.strings in Resources */,
+				9DBE42181948120200B1D47E /* Shader.fsh in Resources */,
+				9DBE42191948120200B1D47E /* Shader.vsh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CE06C69C18F62B5F00AC2015 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd Scripts\n./build_framework.sh";
+		};
+		CED8438E18F663B900E4A45F /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd Scripts\n./prepare_framework.sh";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE30CB4D18FFA90900381EC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEDB8259179674BF00972087 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DB24E111934287A008850EC /* _DSKShader.m in Sources */,
+				CE38724B18A6194C009CF57C /* DSKJoystick.mm in Sources */,
+				CED798A118FBA8440010B537 /* DSKLog.m in Sources */,
+				CE71966918CAF9B10003753E /* DSKMouse.mm in Sources */,
+				CE38720218A616B0009CF57C /* DSKEmulator.mm in Sources */,
+				CE38720418A616B0009CF57C /* _DSKRenderer.m in Sources */,
+				CE30CB4C18FFA29B00381EC9 /* DSKError.m in Sources */,
+				CE02ED1318A73D3D00C80120 /* DSKFileSystem.mm in Sources */,
+				CE6A41861902D078009712E9 /* _DSKSimpleRenderer.m in Sources */,
+				CE38725218A6A4B2009CF57C /* UIDevice+Jailbreak.m in Sources */,
+				CE71966518CAF5B90003753E /* DSKPath.m in Sources */,
+				CE38720618A616B0009CF57C /* DSKKeyboard.mm in Sources */,
+				CE71966C18CAFB740003753E /* DSKVideo.mm in Sources */,
+				CEB6A30618CD52D600A8BF9B /* _DSKTexture.m in Sources */,
+				CEDF53A3190161BE00BC5818 /* DSKGLView.m in Sources */,
+				CE30CB4818FFA23300381EC9 /* DSKException.m in Sources */,
+				CE38720818A616B0009CF57C /* DSKShell.mm in Sources */,
+				CE73F9D618CC487300B1524E /* _DSKFrame.m in Sources */,
+				CE45FCB31926B201000DA660 /* DSKView.m in Sources */,
+				CE71966218CAF59F0003753E /* DSKDrive.m in Sources */,
+				CE38724E18A6198A009CF57C /* DSKAudio.mm in Sources */,
+				CE30CB6318FFAA6500381EC9 /* NSBundle+Resources.m in Sources */,
+				9DB24E0C193427EC008850EC /* _DSKShaderProgram.m in Sources */,
+				CED721B219023BC900C7D2B5 /* _DSKCRTRenderer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE06C69718F62B5400AC2015 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEDB825C179674BF00972087 /* DOSKit */;
+			targetProxy = CE06C69618F62B5400AC2015 /* PBXContainerItemProxy */;
+		};
+		CE30CB7218FFB13700381EC9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE30CB5018FFA90900381EC9 /* DOSKitResources */;
+			targetProxy = CE30CB7118FFB13700381EC9 /* PBXContainerItemProxy */;
+		};
+		CEDCDF501904C8B600F59FD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DOSBox;
+			targetProxy = CEDCDF4F1904C8B600F59FD7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CE30CB5718FFA90900381EC9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE30CB5818FFA90900381EC9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE06C69418F62B4D00AC2015 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CE06C69518F62B4D00AC2015 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CE2CA1DA1787A14D001F6D5F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CE2CA1DB1787A14D001F6D5F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE30CB5C18FFA90900381EC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Resources/DOSKitResources-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Resources/DOSKitResources-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		CE30CB5D18FFA90900381EC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Resources/DOSKitResources-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = "Resources/DOSKitResources-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		CEDB8267179674BF00972087 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_INT_CONVERSION = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vilim (F47PNPUBN4)";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DSTROOT = /tmp/iDOSBox.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Source/DOSKit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = YES;
+				GCC_WARN_SIGN_COMPARE = NO;
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libraries/DOSBox/Source/include";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DOSKit;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				USER_HEADER_SEARCH_PATHS = "";
+				WARNING_CFLAGS = "";
+			};
+			name = Debug;
+		};
+		CEDB8268179674BF00972087 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_INT_CONVERSION = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Matthew Vilim (F47PNPUBN4)";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DSTROOT = /tmp/iDOSBox.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Source/DOSKit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = YES;
+				GCC_WARN_SIGN_COMPARE = NO;
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libraries/DOSBox/Source/include";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = DOSKit;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				USER_HEADER_SEARCH_PATHS = "";
+				WARNING_CFLAGS = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE06C69318F62B4D00AC2015 /* Build configuration list for PBXAggregateTarget "DOSKitFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE06C69418F62B4D00AC2015 /* Debug */,
+				CE06C69518F62B4D00AC2015 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE2CA1C91787A14D001F6D5F /* Build configuration list for PBXProject "DOSKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE2CA1DA1787A14D001F6D5F /* Debug */,
+				CE2CA1DB1787A14D001F6D5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE30CB5B18FFA90900381EC9 /* Build configuration list for PBXNativeTarget "DOSKitResources" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE30CB5C18FFA90900381EC9 /* Debug */,
+				CE30CB5D18FFA90900381EC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEDB8266179674BF00972087 /* Build configuration list for PBXNativeTarget "DOSKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEDB8267179674BF00972087 /* Debug */,
+				CEDB8268179674BF00972087 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE2CA1C61787A14D001F6D5F /* Project object */;
+}
