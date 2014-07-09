@@ -57,6 +57,8 @@ static void _DSKDidHaltNotification(void);
 @interface DSKEmulator () {
     sem_t *_bootSemaphore;
     pthread_mutex_t _eventMutex;
+    pthread_cond_t _pauseCondition;
+    pthread_mutex_t _pauseMutex;
 }
 
 @property (readwrite, nonatomic) NSThread *emulatorThread;
@@ -112,6 +114,8 @@ void _DSKDidHaltNotification(void) {
 
 @implementation DSKEmulator
 
+@synthesize paused = _paused;
+
 + (instancetype)currentEmulator {
     return _currentEmulator;
 }
@@ -136,8 +140,11 @@ void _DSKDidHaltNotification(void) {
                                    DSKEmulatorWillStartNotification: NSStringFromSelector(@selector(emulatorDidHalt:))};
         GFX_EventsHandler = _DSKEvents;
         
+        _eventMutex = PTHREAD_MUTEX_INITIALIZER;
+        _pauseMutex = PTHREAD_MUTEX_INITIALIZER;
+        _pauseCondition = PTHREAD_COND_INITIALIZER;
+        
         // iOS currently doesn't implement unnamed semaphores
-        pthread_mutex_init(&_eventMutex, NULL);
         _bootSemaphore = sem_open("bootSemaphore", O_CREAT, S_IRWXU, 0);
         [NSThread detachNewThreadSelector:@selector(_emulatorThread) toTarget:self withObject:nil];
         // block until DOSBox is ready to begin accepting commands
@@ -154,10 +161,19 @@ void _DSKDidHaltNotification(void) {
 }
 
 - (void)setPaused:(BOOL)paused {
+    pthread_mutex_lock(&_pauseMutex);
     if (paused != _paused) {
         _paused = paused;
         paused ? [self _pause] : [self _resume];
     }
+    pthread_mutex_unlock(&_pauseMutex);
+}
+
+- (BOOL)isPaused {
+    pthread_mutex_lock(&_pauseMutex);
+    BOOL retval = _paused;
+    pthread_mutex_unlock(&_pauseMutex);
+    return retval;
 }
 
 - (BOOL)requestCore:(DSKCore)core {
@@ -225,6 +241,8 @@ DSK_DIAG_POP
 
 - (void)_resume {
     DSK_LOG_NF(@"resuming emulator...");
+    // we already hold the pause mutex here
+    pthread_cond_signal(&_pauseCondition);
 }
 
 - (void)_startup {
@@ -282,19 +300,20 @@ DSK_DIAG_POP
  * @see GFX_Events - sdlmain.cpp:1482
  */
 - (void)_runEvents {
-    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-    // run loop once
-    //[runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantPast]];
+    pthread_mutex_unlock(&_eventMutex);
+    
+    pthread_mutex_lock(&_pauseMutex);
+    while (_paused) {
+        pthread_cond_wait(&_pauseCondition, &_pauseMutex);
+    }
+    pthread_mutex_unlock(&_pauseMutex);
+    
     // signal DOSBox to cleanup
     if (!self.isExecuting) {
         KillSwitch(true);
     }
-    
-    // spin while processing the run loop to avoid blocking the main thread while paused
-    while (self.isPaused) {
-        // run loop, waiting for input to conserve battery
-        [runLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-    }
+    // everything except DOSBox's event loop is one huge critical section since it's not thread safe
+    pthread_mutex_lock(&_eventMutex);
 }
 
 - (BOOL)_isCoreSupported:(DSKCore)core {

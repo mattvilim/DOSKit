@@ -83,7 +83,7 @@ void _DSKEndUpdate(const Bit16u *changedLines) {
         GFX_StartUpdateHandler = _DSKStartUpdate;
         GFX_EndUpdateHandler = _DSKEndUpdate;
         
-        pthread_mutex_init(&_renderMutex, NULL);
+        _renderMutex = PTHREAD_MUTEX_INITIALIZER;
     }
     return self;
 }

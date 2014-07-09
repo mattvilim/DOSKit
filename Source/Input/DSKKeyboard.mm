@@ -343,8 +343,9 @@ KBD_KEYS _keyFromKeyCode(DSKKeyCode keyCode) {
      * keys from iOS keyboard passed here may be non-ascii unicode characters which will crash DOSBox
      * we also need to avoid pushing consecutive key presses or releases into the buffer which could never happen
      * with a physical keyboard
+     * we shouldn't tamper with the key buffer while paused because the keys will be read on resume
      */
-    if (key != DSKUnknownKeyCode && _keyPressed[key] != pressed) {
+    if (key != DSKUnknownKeyCode && _keyPressed[key] != pressed && !self.emulator.paused) {
         _keyPressed[key] = pressed;
         pthread_mutex_lock(self.emulator.eventMutex);
         KEYBOARD_AddKey(_keyFromKeyCode(key), pressed);

@@ -113,6 +113,7 @@
 #pragma mark UIKeyInput
 
 - (void)tap:(UITapGestureRecognizer *)tapGesture {
+    self.emulator.paused = !self.emulator.paused;
     if (![self isFirstResponder]) {
         [self becomeFirstResponder];
     } else {
