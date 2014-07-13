@@ -37,10 +37,6 @@ void DOSBOX_SetNormalLoop();
 
 void DOSBOX_Init(void);
 
-#if DOSKIT
-extern void KillSwitch(bool pressed);
-#endif
-
 class Config;
 extern Config * control;
 

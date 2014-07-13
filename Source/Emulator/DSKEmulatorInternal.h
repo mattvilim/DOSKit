@@ -24,6 +24,4 @@
 
 @property (readonly) pthread_mutex_t *eventMutex;
 
-+ (instancetype)currentEmulator;
-
 @end

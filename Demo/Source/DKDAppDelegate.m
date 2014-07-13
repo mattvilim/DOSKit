@@ -31,13 +31,10 @@
 @synthesize window = _window;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    self.emulator = [[DSKEmulator alloc] init];
-    
+    self.emulator = [DSKEmulator sharedEmulator];
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSURL *test = [NSURL fileURLWithPath:path];
     [self.emulator.fileSystem mountDriveLetter:DSKCDriveLetter atURL:test error:nil];
-    
-    self.emulator.executing = YES;
     
     self.view = [[DSKView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.view.emulator = self.emulator;

@@ -45,8 +45,6 @@ NSString * const DSKEmulatorDidHaltNotification = @"DSKmulatorDidHaltNotificatio
 
 static NSString * const DSKDefaultConfigFilename = @"dosbox.conf";
 
-__weak static DSKEmulator *_currentEmulator;
-
 static void _DSKWillStartNotification(void);
 static void _DSKDidStartNotification(void);
 static void _DSKWillPauseNotification(void);
@@ -56,12 +54,12 @@ static void _DSKDidHaltNotification(void);
 
 @interface DSKEmulator () {
     sem_t *_bootSemaphore;
+    sem_t *_shutdownSemaphore;
     pthread_mutex_t _eventMutex;
-    pthread_cond_t _pauseCondition;
     pthread_mutex_t _pauseMutex;
+    pthread_cond_t _pauseCondition;
+    pthread_mutex_t _executingMutex;
 }
-
-@property (readwrite, nonatomic) NSThread *emulatorThread;
 
 @property (readwrite, nonatomic) DSKVideo *video;
 @property (readwrite, nonatomic) DSKAudio *audio;
@@ -70,11 +68,10 @@ static void _DSKDidHaltNotification(void);
 @property (readwrite, nonatomic) DSKJoystick *joystick;
 @property (readwrite, nonatomic) DSKFileSystem *fileSystem;
 
+@property (readwrite, nonatomic, getter = isExecuting) BOOL executing;
 @property (readwrite, nonatomic) DSKCore core;
 @property (readwrite, nonatomic) NSDictionary *notificationSelectors;
 
-+ (instancetype)currentEmulator;
-+ (void)_setCurrentEmulator:(DSKEmulator *)emulator;
 - (void)_postEmulatorStateNotification:(NSString *)name;
 - (void)_start;
 - (void)_halt;
@@ -85,39 +82,45 @@ static void _DSKDidHaltNotification(void);
 @end
 
 void _DSKEvents(void) {
-    [[DSKEmulator currentEmulator] _runEvents];
+    [[DSKEmulator sharedEmulator] _runEvents];
 }
 
 void _DSKWillStartNotification(void) {
-    [[DSKEmulator currentEmulator] _postEmulatorStateNotification:DSKEmulatorWillStartNotification];
+    [[DSKEmulator sharedEmulator] _postEmulatorStateNotification:DSKEmulatorWillStartNotification];
 }
 
 void _DSKDidStartNotification(void) {
-    [[DSKEmulator currentEmulator] _postEmulatorStateNotification:DSKEmulatorDidStartNotification];
+    [[DSKEmulator sharedEmulator] _postEmulatorStateNotification:DSKEmulatorDidStartNotification];
 }
 
 void _DSKWillPauseNotification(void) {
-    [[DSKEmulator currentEmulator] _postEmulatorStateNotification:DSKEmulatorWillPauseNotification];
+    [[DSKEmulator sharedEmulator] _postEmulatorStateNotification:DSKEmulatorWillPauseNotification];
 }
 
 void _DSKDidPauseNotification(void) {
-    [[DSKEmulator currentEmulator] _postEmulatorStateNotification:DSKEmulatorDidPauseNotification];
+    [[DSKEmulator sharedEmulator] _postEmulatorStateNotification:DSKEmulatorDidPauseNotification];
 }
 
 void _DSKWillHaltNotification(void) {
-    [[DSKEmulator currentEmulator] _postEmulatorStateNotification:DSKEmulatorWillHaltNotification];
+    [[DSKEmulator sharedEmulator] _postEmulatorStateNotification:DSKEmulatorWillHaltNotification];
 }
 
 void _DSKDidHaltNotification(void) {
-    [[DSKEmulator currentEmulator] _postEmulatorStateNotification:DSKEmulatorDidHaltNotification];
+    [[DSKEmulator sharedEmulator] _postEmulatorStateNotification:DSKEmulatorDidHaltNotification];
 }
 
 @implementation DSKEmulator
 
 @synthesize paused = _paused;
+@synthesize executing = _executing;
 
-+ (instancetype)currentEmulator {
-    return _currentEmulator;
++ (instancetype)sharedEmulator {
+    static DSKEmulator *_sharedEmulator = nil;
+    static dispatch_once_t token;
+    dispatch_once(&token, ^{
+        _sharedEmulator = [[self alloc] init];
+    });
+    return _sharedEmulator;
 }
 
 - (instancetype)init {
@@ -143,21 +146,37 @@ void _DSKDidHaltNotification(void) {
         _eventMutex = PTHREAD_MUTEX_INITIALIZER;
         _pauseMutex = PTHREAD_MUTEX_INITIALIZER;
         _pauseCondition = PTHREAD_COND_INITIALIZER;
+        _executingMutex = PTHREAD_MUTEX_INITIALIZER;
         
         // iOS currently doesn't implement unnamed semaphores
         _bootSemaphore = sem_open("bootSemaphore", O_CREAT, S_IRWXU, 0);
-        [NSThread detachNewThreadSelector:@selector(_emulatorThread) toTarget:self withObject:nil];
-        // block until DOSBox is ready to begin accepting commands
-        sem_wait(_bootSemaphore);
+        _shutdownSemaphore = sem_open("shutdownSemaphore", O_CREAT, S_IRWXU, 0);
+        self.executing = YES;
     }
     return self;
 }
 
+- (BOOL)isExecuting {
+    pthread_mutex_lock(&_executingMutex);
+    BOOL retval = _executing;
+    pthread_mutex_unlock(&_executingMutex);
+    return retval;
+}
+
 - (void)setExecuting:(BOOL)executing {
+    pthread_mutex_lock(&_executingMutex);
     if (executing != _executing) {
         _executing = executing;
         executing ? [self _start] : [self _halt];
     }
+    pthread_mutex_unlock(&_executingMutex);
+}
+
+- (BOOL)isPaused {
+    pthread_mutex_lock(&_pauseMutex);
+    BOOL retval = _paused;
+    pthread_mutex_unlock(&_pauseMutex);
+    return retval;
 }
 
 - (void)setPaused:(BOOL)paused {
@@ -167,13 +186,6 @@ void _DSKDidHaltNotification(void) {
         paused ? [self _pause] : [self _resume];
     }
     pthread_mutex_unlock(&_pauseMutex);
-}
-
-- (BOOL)isPaused {
-    pthread_mutex_lock(&_pauseMutex);
-    BOOL retval = _paused;
-    pthread_mutex_unlock(&_pauseMutex);
-    return retval;
 }
 
 - (BOOL)requestCore:(DSKCore)core {
@@ -191,15 +203,11 @@ void _DSKDidHaltNotification(void) {
     return isCoreSupported;
 }
 
-+ (void)_setCurrentEmulator:(DSKEmulator *)emulator {
-    _currentEmulator = emulator;
-}
-
 - (void)dealloc {
-    [self _halt];
+    self.executing = NO;
     pthread_mutex_destroy(&_eventMutex);
     sem_close(_bootSemaphore);
-    delete control;
+    sem_close(_shutdownSemaphore);
 }
 
 - (void)_postEmulatorStateNotification:(NSString *)name {
@@ -213,26 +221,14 @@ DSK_DIAG_POP
 
 - (void)_start {
     DSK_LOG_NF(@"starting emulator...");
-    [DSKEmulator _setCurrentEmulator:self];
-    // schedule DOSBox to initialize on next run loop to avoid blocking the main thread
-    [self.emulatorThread start];
-    /*
-    [[NSRunLoop currentRunLoop] performSelector:@selector(_runLoop)
-                                         target:self
-                                       argument:nil
-                                          order:0
-                                          modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
-     */
+    [NSThread detachNewThreadSelector:@selector(_emulatorThread) toTarget:self withObject:nil];
+    // block until DOSBox is ready to begin accepting commands
+    sem_wait(_bootSemaphore);
 }
 
 - (void)_halt {
     DSK_LOG_NF(@"halting emulator...");
-    // cancel the scheduled message in case DOSBox hasn't been initialized yet
-    /*
-    [[NSRunLoop currentRunLoop] cancelPerformSelector:@selector(_runLoop)
-                                               target:self
-                                             argument:nil];
-     */
+    sem_wait(_shutdownSemaphore);
 }
 
 - (void)_pause {
@@ -245,48 +241,48 @@ DSK_DIAG_POP
     pthread_cond_signal(&_pauseCondition);
 }
 
-- (void)_startup {
-
-}
-
 /*
  * Initializes DOSBox and begins emulation; this method does not return until DOSBox closes, this method should be scheduled
  * at the beginning of the next run loop execution to avoid blocking the main thread's run loop.
  * @see main sdlmain.cpp:1879
  */
 - (void)_emulatorThread {
-    try {
-        char *argv[0];
-        CommandLine commandLine(0, argv);
-        control = new Config(&commandLine);
-        
-        DSK_LOG_NF(@"initializing DOSBox...");
-        DOSBOX_Init();
-        DSK_LOG_NF(@"DOSBox successfully initialized!");
-        
-        DSK_LOG_NF(@"initializing SDL...");
-        if (SDL_Init(SDL_INIT_TIMER | SDL_INIT_NOPARACHUTE)) {
-            [NSException dsk_raise:DSKSDLUnrecoverableExceptionName
-                           message:[NSString stringWithFormat:DSKSDLUnrecoverableExceptionFormat, SDL_GetError()]];
+    @autoreleasepool {
+        try {
+            char *argv[0];
+            CommandLine commandLine(0, argv);
+            control = new Config(&commandLine);
+            
+            DSK_LOG_NF(@"initializing DOSBox...");
+            DOSBOX_Init();
+            DSK_LOG_NF(@"DOSBox successfully initialized!");
+            
+            DSK_LOG_NF(@"initializing SDL...");
+            if (SDL_Init(SDL_INIT_TIMER | SDL_INIT_NOPARACHUTE)) {
+                [NSException dsk_raise:DSKSDLUnrecoverableExceptionName
+                               message:[NSString stringWithFormat:DSKSDLUnrecoverableExceptionFormat, SDL_GetError()]];
+            }
+            DSK_LOG_NF(@"SDL successfully initialized!");
+            NSURL *configFile = [[NSBundle dsk_emulatorBundle] URLForResource:[DSKDefaultConfigFilename stringByDeletingPathExtension]
+                                                                withExtension:[DSKDefaultConfigFilename pathExtension]];
+            
+            control->ParseConfigFile(configFile.path.fileSystemRepresentation);
+            control->Init();
+            sem_post(_bootSemaphore);
+            control->StartUp();
+        } catch (char *error) {
+            NSString *errorMessage = [NSString stringWithCString:error encoding:NSUTF8StringEncoding];
+            [NSException dsk_raise:DSKDOSBoxUnrecoverableExceptionName
+                           message:[NSString stringWithFormat:DSKDOSBoxUnrecoverableExceptionFormat, errorMessage]];
+        } catch (int) {
+            // DOSBox throws an integer exception to shutdown
+            DSK_LOG_NF(@"shutting down SDL...");
+            SDL_Quit();
+            DSK_LOG_NF(@"shutting down DOSBox...");
+            delete control;
+            sem_post(_shutdownSemaphore);
         }
-        DSK_LOG_NF(@"SDL successfully initialized!");
-        NSURL *configFile = [[NSBundle dsk_emulatorBundle] URLForResource:[DSKDefaultConfigFilename stringByDeletingPathExtension]
-                                                            withExtension:[DSKDefaultConfigFilename pathExtension]];
-        
-        control->ParseConfigFile(configFile.path.fileSystemRepresentation);
-        control->Init();
-        sem_post(_bootSemaphore);
-        control->StartUp();
-    } catch (char *error) {
-        NSString *errorMessage = [NSString stringWithCString:error encoding:NSUTF8StringEncoding];
-        [NSException dsk_raise:DSKDOSBoxUnrecoverableExceptionName
-                       message:[NSString stringWithFormat:DSKDOSBoxUnrecoverableExceptionFormat, errorMessage]];
-    } catch (int) {
-        // DOSBox throws an integer exception to shutdown
-        DSK_LOG_NF(@"shutting down DOSBox...");
     }
-    DSK_LOG_NF(@"shutting down SDL...");
-    SDL_Quit();
 }
 
 - (pthread_mutex_t *)eventMutex {
@@ -309,9 +305,11 @@ DSK_DIAG_POP
     pthread_mutex_unlock(&_pauseMutex);
     
     // signal DOSBox to cleanup
-    if (!self.isExecuting) {
-        KillSwitch(true);
+    if (!self.executing) {
+        // DOSBox uses a strange exit strategy... @see sdlmain.cpp:275
+        throw 1;
     }
+    
     // everything except DOSBox's event loop is one huge critical section since it's not thread safe
     pthread_mutex_lock(&_eventMutex);
 }

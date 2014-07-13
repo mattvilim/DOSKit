@@ -272,11 +272,7 @@ static void GFX_SetIcon() {
 #endif
 }
 
-#if DOSKIT
-void KillSwitch(bool pressed) {
-#else
 static void KillSwitch(bool pressed) {
-#endif
 	if (!pressed)
 		return;
 	throw 1;

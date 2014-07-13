@@ -54,19 +54,19 @@ Bitu _DSKGetRGB(Bit8u red, Bit8u green, Bit8u blue) {
 }
 
 Bitu _DSKSetSize(Bitu width, Bitu height, Bitu flags, double scalex, double scaley, GFX_CallBack_t cb) {
-    [[DSKEmulator currentEmulator].video _createFrameWithSize:CGSizeMake(width, height)
+    [[DSKEmulator sharedEmulator].video _createFrameWithSize:CGSizeMake(width, height)
                                                       atScale:CGSizeMake(scalex, scaley)
                                                  withCallback:cb];
     return _DSKGetBestMode(flags);
 }
 
 bool _DSKStartUpdate(Bit8u * &pixels, Bitu &pitch) {
-    [[DSKEmulator currentEmulator].video _startFrameWithBuffer:(void **)&pixels pitch:&pitch];
+    [[DSKEmulator sharedEmulator].video _startFrameWithBuffer:(void **)&pixels pitch:&pitch];
     return true;
 }
 
 void _DSKEndUpdate(const Bit16u *changedLines) {
-    [[DSKEmulator currentEmulator].video _endFrameWithChangedLines:changedLines];
+    [[DSKEmulator sharedEmulator].video _endFrameWithChangedLines:changedLines];
 }
 
 

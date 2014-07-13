@@ -62,8 +62,9 @@ typedef NS_ENUM(NSInteger, DSKCore) {
 @property (readonly, nonatomic) DSKFileSystem *fileSystem;
 
 @property (readonly, nonatomic) DSKCore core;
-@property (readwrite, nonatomic, getter = isExecuting) BOOL executing;
 @property (readwrite, nonatomic, getter = isPaused) BOOL paused;
+
++ (instancetype)sharedEmulator;
 
 - (BOOL)requestCore:(DSKCore)core;
 
