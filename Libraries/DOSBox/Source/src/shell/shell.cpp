@@ -27,10 +27,14 @@
 #include "callback.h"
 #include "support.h"
 
+#if DOSKIT
+DOS_Shell *current_shell = 0;
+#endif
+
 Bitu call_shellstop;
 /* Larger scope so shell_del autoexec can use it to
  * remove things from the environment */
-Program * first_shell = 0; 
+Program * first_shell = 0;
 
 static Bitu shellstop_handler(void) {
 	return CBRET_STOP;
@@ -132,7 +136,17 @@ DOS_Shell::DOS_Shell():Program(){
 	bf=0;
 	call=false;
 	completion_start = NULL;
+#if DOSKIT
+    this->parent = current_shell;
+    current_shell = this;
+#endif
 }
+
+#if DOSKIT
+DOS_Shell::~DOS_Shell() {
+    current_shell = this->parent;
+}
+#endif
 
 Bitu DOS_Shell::GetRedirection(char *s, char **ifn, char **ofn,bool * append) {
 
@@ -667,6 +681,9 @@ void SHELL_Init() {
 
 	
 	SHELL_ProgramStart(&first_shell);
+#if DOSKIT
+    current_shell = (DOS_Shell *)first_shell;
+#endif
 	first_shell->Run();
 	delete first_shell;
 	first_shell = 0;//Make clear that it shouldn't be used anymore

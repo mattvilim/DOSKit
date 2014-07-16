@@ -22,6 +22,7 @@
 #import "_DSKDrawingTypes.h"
 #import "_DSKShaderProgram.h"
 #import "_DSKShader.h"
+#import "_DSKFrame.h"
 
 #import <OpenGLES/ES3/gl.h>
 #import <OpenGLES/ES3/glext.h>
@@ -247,6 +248,11 @@
 
 - (void)render {
     [EAGLContext setCurrentContext:self.context];
+    
+    // DOSBox may have changed rendering resolution between frames
+    if (!CGSizeEqualToSize(self.frame.size, self.texture.frameSize)) {
+        self.texture = [_DSKTexture textureWithFrame:self.frame error:nil];
+    }
     
     [self.texture updateWithFrame:self.frame];
     

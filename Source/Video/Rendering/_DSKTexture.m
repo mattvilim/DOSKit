@@ -25,6 +25,7 @@
     GLenum _type;
 }
 
+@property (readwrite, nonatomic) CGSize frameSize;
 @property (readwrite, nonatomic) CGRect clipping;
 
 @end
@@ -52,6 +53,7 @@
 }
 
 - (void)loadWithFrame:(_DSKFrame *)frame error:(NSError **)outError {
+    _frameSize = frame.size;
     NSUInteger size;
     for (size = 1; size < MAX(frame.size.width, frame.size.height); size <<= 1);
     _width = _height = size;

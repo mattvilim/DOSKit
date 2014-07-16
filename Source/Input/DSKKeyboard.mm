@@ -319,6 +319,19 @@ KBD_KEYS _keyFromKeyCode(DSKKeyCode keyCode) {
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:self userInfo:@{DSKKeyUserInfo: [NSValue valueWithKey:key]}];
 }
 
+- (void)typeText:(NSString *)text {
+    [self typeText:text forDuration:0.0];
+}
+
+- (void)typeText:(NSString *)text forDuration:(NSTimeInterval)duration {
+    NSUInteger length = [text length];
+    unichar *buffer = (unichar *)malloc(length * sizeof(unichar));
+    [text getCharacters:buffer range:NSMakeRange(0, length)];
+    for (NSUInteger i = 0; i < length; i++) {
+        [self pressCharacter:buffer[i] forDuration:duration];
+    }
+}
+
 - (void)setCharacter:(unichar)character pressed:(BOOL)pressed {
     DSKKey key = DSKKeyFromCharacter(character);
     if (key.modifier & DSKShiftKeyModifier) {
@@ -332,10 +345,9 @@ KBD_KEYS _keyFromKeyCode(DSKKeyCode keyCode) {
 }
 
 - (void)pressCharacter:(unichar)character forDuration:(NSTimeInterval)duration {
-    [self setCharacter:character pressed:YES];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [self setCharacter:character pressed:NO];
-    });
+    DSKKey key = DSKKeyFromCharacter(character);
+    [self setKey:DSKLeftShiftKeyCode pressed:key.modifier & DSKShiftKeyModifier];
+    [self pressKey:key.code forDuration:duration];
 }
 
 - (void)setKey:(DSKKeyCode)key pressed:(BOOL)pressed {
@@ -359,9 +371,13 @@ KBD_KEYS _keyFromKeyCode(DSKKeyCode keyCode) {
 
 - (void)pressKey:(DSKKeyCode)key forDuration:(NSTimeInterval)duration {
     [self setKey:key pressed:YES];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    if (duration > 0) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self setKey:key pressed:NO];
+        });
+    } else {
         [self setKey:key pressed:NO];
-    });
+    }
 }
 
 @end

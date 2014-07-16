@@ -41,6 +41,10 @@ extern Program * first_shell;
 
 class DOS_Shell;
 
+#if DOSKIT
+extern DOS_Shell *current_shell;
+#endif
+
 class BatchFile {
 public:
 	BatchFile(DOS_Shell * host,char const* const resolved_name,char const* const entered_name, char const * const cmd_line);
@@ -69,7 +73,9 @@ private:
 public:
 
 	DOS_Shell();
-
+#if DOSKIT
+    ~DOS_Shell();
+#endif
 	void Run(void);
 	void RunInternal(void); //for command /C
 /* A load of subfunctions */
@@ -118,6 +124,9 @@ public:
 	bool echo;
 	bool exit;
 	bool call;
+#if DOSKIT
+    DOS_Shell *parent;
+#endif
 };
 
 struct SHELL_Cmd {

@@ -193,6 +193,9 @@ DSK_INLINE DSKKey DSKKeyMake(DSKKeyCode code, DSKKeyModifier modifier, unichar c
 
 - (instancetype)initWithEmulator:(DSKEmulator *)emulator;
 
+- (void)typeText:(NSString *)text;
+- (void)typeText:(NSString *)text forDuration:(NSTimeInterval)duration;
+
 - (BOOL)keyPressed:(DSKKey)key;
 - (BOOL)keyCodePressed:(DSKKeyCode)keyCode;
 - (BOOL)modifiersActive:(DSKKeyModifier)modifiers;

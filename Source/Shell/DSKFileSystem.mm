@@ -48,16 +48,21 @@ DSK_INLINE NSUInteger _indexFromDriveLetter(DSKDriveLetter letter) {
     return self;
 }
 
+// @see dos_programs.cpp
 - (DSKDrive *)mountDriveLetter:(DSKDriveLetter)letter atURL:(NSURL *)url error:(NSError **)outError {
     DSKDrive *drive = [[DSKDrive alloc] initWithLetter:letter andURL:url];
     
-    // see dos_programs.cpp
-    localDrive *dosDrive = new localDrive(url.fileSystemRepresentation,
-                                       512, 127, 16383, 4031, DSKHardDriveMediaID);
+    // DOSBox requires trailing slash which NSURL strips
+    const char *path = [[url.path stringByAppendingString:@"/"] UTF8String];
+    localDrive *dosDrive = new localDrive(path, 512, 32, 32765, 16000, DSKHardDriveMediaID);
     
     NSUInteger index = _indexFromDriveLetter(drive.letter);
     Drives[index] = dosDrive;
     mem_writeb(Real2Phys(dos.tables.mediaid) + index * 2, dosDrive->GetMediaByte());
+    char label[8];
+    label[0] = letter;
+    strcpy(label + 1, "_DRIVE");
+    dosDrive->dirCache.SetLabel(label, false, true);
     return drive;
 }
 

@@ -24,10 +24,13 @@
 #import "_DSKDrawingTypes.h"
 #import "DSKFileSystem.h"
 
+#import "DSKShell.h"
+
 @interface DSKView ()
 
 @property (readwrite, nonatomic) DSKGLView *glView;
 @property (readwrite, nonatomic) UITapGestureRecognizer *tapGesture;
+@property (readwrite, nonatomic) UILongPressGestureRecognizer *longPressGesture;
 
 @end
 
@@ -72,7 +75,9 @@
     
     // TESTING
     _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    _longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
     [self addGestureRecognizer:_tapGesture];
+    [self addGestureRecognizer:_longPressGesture];
     
     // UIKeyInput
     self.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -110,9 +115,20 @@
     NSLog(@"%@", NSStringFromCGSize(self.bounds.size));
 }
 
+#pragma mark UIResponder
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    return action == @selector(paste:) ? YES : NO;
+}
+
+- (void)paste:(id)sender {
+    [self.emulator.keyboard typeText:[UIPasteboard generalPasteboard].string];
+}
+
 #pragma mark UIKeyInput
 
 - (void)tap:(UITapGestureRecognizer *)tapGesture {
+   // [self.emulator.shell changeDrive:DSKCDriveLetter];
+    [self.emulator.shell executeProgram:@"FIRE" withArgs:NULL];
     if (![self isFirstResponder]) {
         [self becomeFirstResponder];
     } else {
@@ -120,14 +136,18 @@
     }
 }
 
+- (void)longPress:(UILongPressGestureRecognizer *)longPressGesture {
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    [menu setTargetRect:CGRectMake(100, 100, 100, 100) inView:self];
+    [menu setMenuVisible:YES animated:YES];
+}
+
 - (BOOL)hasText {
     return NO;
 }
 
 - (void)insertText:(NSString *)text {
-    for (NSUInteger i = 0; i < [text length]; i++) {
-        [self.emulator.keyboard pressCharacter:[text characterAtIndex:0]];
-    }
+    [self.emulator.keyboard pressCharacter:[text characterAtIndex:0]];
 }
 
 - (void)deleteBackward {

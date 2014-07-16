@@ -16,12 +16,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#import "DSKDrive.h"
+
 @class DSKEmulator;
 
 @interface DSKShell : NSObject
 
 - (instancetype)initWithEmulator:(DSKEmulator *)emulator;
 
-- (void)executeCommand:(NSString *)command;
+- (void)changeDrive:(DSKDriveLetter)drive;
+- (void)executeProgram:(NSString *)program withArgs:(char *)args;
 
 @end

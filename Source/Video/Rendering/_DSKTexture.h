@@ -20,6 +20,7 @@
 
 @interface _DSKTexture : NSObject
 
+@property (readonly, nonatomic) CGSize frameSize;
 @property (readonly, nonatomic) GLuint name, width, height;
 @property (readonly, nonatomic) GLfloat clippingAspectRatio;
 @property (readonly, nonatomic) GLenum target;

@@ -32,9 +32,11 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     self.emulator = [DSKEmulator sharedEmulator];
+    
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSURL *test = [NSURL fileURLWithPath:path];
     [self.emulator.fileSystem mountDriveLetter:DSKCDriveLetter atURL:test error:nil];
+    //[self.emulator.shell changeDrive:DSKCDriveLetter];
     
     self.view = [[DSKView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.view.emulator = self.emulator;
@@ -47,19 +49,18 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    //self.emulator.paused = NO;
+    self.emulator.paused = NO;
     self.view.glView.drawing = YES;
 }
 
-/*
 - (void)applicationWillResignActive:(UIApplication *)application {
     self.emulator.paused = YES;
-    self.view.drawing = NO;
+    self.view.glView.drawing = NO;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     self.emulator.paused = NO;
-    self.view.drawing = YES;
+    self.view.glView.drawing = YES;
 }
-*/
+
 @end

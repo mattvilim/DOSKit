@@ -18,11 +18,17 @@
 
 #import "DSKShell.h"
 #import "DSKEmulator.h"
+#import "DSKEmulatorInternal.h"
 
-@interface DSKShell ()
+#import <DOSBox/shell.h>
+
+#import <pthread.h>
+
+@interface DSKShell () {
+    char _buffer[CMD_MAXLINE];
+}
 
 @property (weak, readwrite) DSKEmulator *emulator;
-@property (readwrite) NSMutableArray *commandQueue;
 
 @end
 
@@ -31,21 +37,33 @@
 - (instancetype)initWithEmulator:(DSKEmulator *)emulator {
     if (self = [super init]) {
         _emulator = emulator;
-        _commandQueue = [NSMutableArray array];
     }
     return self;
 }
 
-- (void)executeCommand:(NSString *)command {
-    
+- (void)changeDrive:(DSKDriveLetter)drive {
+    pthread_mutex_lock(self.emulator.eventMutex);
+    strcpy(_buffer, "C:");
+    current_shell->DoCommand(_buffer);
+    current_shell->WriteOut_NoParsing("\n\n");
+    current_shell->ShowPrompt();
+    pthread_mutex_unlock(self.emulator.eventMutex);
 }
 
-- (void)typeString:(NSString *)string {
-    
+- (void)executeProgram:(NSString *)program withArgs:(char *)args {
+    pthread_mutex_lock(self.emulator.eventMutex);
+    strcpy(_buffer, "FIRE");
+    current_shell->DoCommand(_buffer);
+    //bool retval = current_shell->Execute((char *)[program UTF8String], _buffer);
+    pthread_mutex_unlock(self.emulator.eventMutex);
+    return;
 }
-
-- (void)paste {
-    [self typeString:[UIPasteboard generalPasteboard].string];
+/*
+- (void)mountDriveLetter:(DSKDriveLetter)letter atURL:(NSURL *)url error:(NSError **)outError {
+    pthread_mutex_lock(self.emulator.eventMutex);
+    strcpy(_buffer, "C:");
+    current_shell->CMd_M
+    pthread_mutex_unlock(self.emulator.eventMutex);
 }
-
+ */
 @end
