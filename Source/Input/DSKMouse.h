@@ -16,6 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+@class DSKEmulator;
+
 @interface DSKMouse : NSObject
+
+- (instancetype)initWithEmulator:(DSKEmulator *)emulator;
+
+- (void)setMousePointerTo:(CGPoint)point;
+- (void)applyMousePointerMovementTo:(CGPoint)point;
+
+- (void)leftMouseButtonSingleClick;
+- (void)rightMouseButtonSingleClick;
 
 @end

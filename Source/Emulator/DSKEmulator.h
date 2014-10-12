@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, DSKCore) {
 
 @end
 
-@class DSKVideo, DSKShell, DSKKeyboard, DSKJoystick, DSKAudio, DSKFileSystem;
+@class DSKVideo, DSKShell, DSKKeyboard, DSKMouse, DSKJoystick, DSKAudio, DSKFileSystem;
 
 @interface DSKEmulator : NSObject
 
@@ -58,6 +58,7 @@ typedef NS_ENUM(NSInteger, DSKCore) {
 @property (readonly, nonatomic) DSKAudio *audio;
 @property (readonly, nonatomic) DSKShell *shell;
 @property (readonly, nonatomic) DSKKeyboard *keyboard;
+@property (readonly, nonatomic) DSKMouse *mouse;
 @property (readonly, nonatomic) DSKJoystick *joystick;
 @property (readonly, nonatomic) DSKFileSystem *fileSystem;
 

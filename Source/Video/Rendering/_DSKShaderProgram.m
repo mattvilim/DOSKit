@@ -18,6 +18,8 @@
 
 #import "_DSKShaderProgram.h"
 #import "_DSKShader.h"
+#import "OpenGLES/ES3/gl.h"
+#import "OpenGLES/ES3/glext.h"
 
 @interface _DSKShaderProgram ()
 

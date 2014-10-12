@@ -21,6 +21,7 @@
 #import "DSKGLView.h"
 #import "DSKEmulator.h"
 #import "DSKKeyboard.h"
+#import "DSKMouse.h"
 #import "_DSKDrawingTypes.h"
 #import "DSKFileSystem.h"
 
@@ -124,6 +125,21 @@
     [self.emulator.keyboard typeText:[UIPasteboard generalPasteboard].string];
 }
 
+#pragma mark UITouches
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[touches allObjects] firstObject];
+    CGPoint point = [touch locationInView:self];
+    [self.emulator.mouse applyMousePointerMovementTo:point];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [[touches allObjects] firstObject];
+    CGPoint point = [touch locationInView:self];
+    [self.emulator.mouse applyMousePointerMovementTo:point];
+}
+
 #pragma mark UIKeyInput
 
 - (void)tap:(UITapGestureRecognizer *)tapGesture {
@@ -133,6 +149,12 @@
         [self becomeFirstResponder];
     } else {
         [self resignFirstResponder];
+    }
+    if (tapGesture.numberOfTouches == 1) {
+        return [self.emulator.mouse leftMouseButtonSingleClick];
+    }
+    if (tapGesture.numberOfTouches == 2) {
+        return [self.emulator.mouse rightMouseButtonSingleClick];
     }
 }
 
