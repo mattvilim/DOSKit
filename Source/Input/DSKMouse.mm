@@ -17,6 +17,17 @@
  */
 
 #import "DSKMouse.h"
+#import "DSKEmulator.h"
+
+#import <DOSBox/control.h>
+#import <DOSBox/mouse.h>
+
+@interface DSKMouse ()
+
+@property (weak, readwrite) DSKEmulator *emulator;
+@property (assign) CGPoint lastMousePosition;
+
+@end
 
 @implementation DSKMouse
 
@@ -25,6 +36,40 @@
         
     }
     return self;
+}
+
+- (instancetype)initWithEmulator:(DSKEmulator *)emulator {
+    if (self = [super init]) {
+        self.emulator = emulator;
+    }
+    return self;
+}
+
+- (void)setMousePointerTo:(CGPoint)point {
+    Mouse_CursorSet(point.x, point.y);
+}
+
+- (void)applyMousePointerMovementTo:(CGPoint)point {
+    if (CGPointEqualToPoint(self.lastMousePosition, CGPointZero)) {
+        self.lastMousePosition = point;
+    }
+    Mouse_CursorMoved(point.x - self.lastMousePosition.x, point.y - self.lastMousePosition.y, point.x, point.y, YES);
+    self.lastMousePosition = point;
+}
+
+- (void)leftMouseButtonSingleClick {
+    [self _perfomSingleClickForButton:0];
+}
+
+- (void)rightMouseButtonSingleClick {
+    [self _perfomSingleClickForButton:1];
+}
+
+- (void)_perfomSingleClickForButton:(NSUInteger)button {
+    Mouse_ButtonPressed(button);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.05f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        Mouse_ButtonReleased(button);
+    });
 }
 
 @end

@@ -22,6 +22,7 @@
 #import "DSKAudio.h"
 #import "DSKShell.h"
 #import "DSKKeyboard.h"
+#import "DSKMouse.h"
 #import "UIDevice+Jailbreak.h"
 #import "DSKFileSystem.h"
 
@@ -65,6 +66,7 @@ static void _DSKDidHaltNotification(void);
 @property (readwrite, nonatomic) DSKAudio *audio;
 @property (readwrite, nonatomic) DSKShell *shell;
 @property (readwrite, nonatomic) DSKKeyboard *keyboard;
+@property (readwrite, nonatomic) DSKMouse *mouse;
 @property (readwrite, nonatomic) DSKJoystick *joystick;
 @property (readwrite, nonatomic) DSKFileSystem *fileSystem;
 
@@ -130,6 +132,7 @@ void _DSKDidHaltNotification(void) {
         _delegate = nil;
         _video = [[DSKVideo alloc] initWithEmulator:self];
         _keyboard = [[DSKKeyboard alloc] initWithEmulator:self];
+        _mouse = [[DSKMouse alloc] initWithEmulator:self];
         _shell = [[DSKShell alloc] initWithEmulator:self];
         _fileSystem = [[DSKFileSystem alloc] initWithEmulator:self];
         _notificationSelectors = @{DSKEmulatorWillStartNotification: NSStringFromSelector(@selector(emulatorWillStart:)),
