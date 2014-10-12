@@ -19,6 +19,8 @@
 #import "_DSKTexture.h"
 #import "_DSKFrame.h"
 #import "_DSKDrawingTypes.h"
+#import "OpenGLES/ES3/gl.h"
+#import "OpenGLES/ES3/glext.h"
 
 @interface _DSKTexture () {
     GLenum _format;
