@@ -1260,7 +1260,6 @@
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv7 armv7s";
 				WARNING_CFLAGS = "";
 			};
 			name = Debug;
@@ -1299,7 +1298,6 @@
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = "non-global";
 				USER_HEADER_SEARCH_PATHS = "";
-				VALID_ARCHS = "armv7 armv7s";
 				WARNING_CFLAGS = "";
 			};
 			name = Release;
